@@ -29,6 +29,10 @@ function openNewPage() {
   window.location.href = "Resources/Frontend/HTML/dashboard.html";
 }
 
+function openNewPage() {
+  window.location.href = "Resources/Frontend/HTML/dashboard.html";
+}
+
 function startSpeechRecognition() {
   const recognition = new (webkitSpeechRecognition || SpeechRecognition)();
 

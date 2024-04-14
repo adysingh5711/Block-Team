@@ -74,13 +74,32 @@
     </div>
     <br> <br>
 
-    <button class="but-1" onclick="openNewPage()">Dashboard</button>
+    <button class="but-1" onclick="openNewPage()">Dashboard</button><br> <br> <br>
+    <button class="but-2" id="connect-button">Connect Wallet</button>
 
     <div class="home-image-container">
         <img class="home-image" src="Resources/Images/3129506_Artboard 1.svg" alt="" />
     </div>
 
     <script src="Resources/JS/script.js"></script>
+    <script>
+        document.getElementById('connect-button').addEventListener('click', event => {
+            let account;
+            let button = event.target;
+            ethereum.request({ method: 'eth_requestAccounts' }).then(accounts => {
+                account = accounts[0];
+                console.log(account);
+                button.textContent = account;
+
+                ethereum.request({ method: 'eth_getBalance', params: [account, 'latest'] }).then(result => {
+                    console.log(result);
+                    let wei = parseInt(result, 16);
+                    let balance = wei / (10 ** 18);
+                    console.log(balance + " ETH");
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
