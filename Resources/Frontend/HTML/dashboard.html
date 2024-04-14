@@ -32,7 +32,7 @@
                     </a>
                 </div> 
             -->
-                <a href="../../index.html" title="Home">
+                <a href="../../../index.html" title="Home">
                     <ion-icon name="home-outline"></ion-icon>
                 </a>
 
@@ -93,7 +93,7 @@
                     <div class="tablinks" onclick="openSetting(event, 'Priv')">
                         <div class="div_container">
                             <div id="logo_2" class="logo_s" onclick="toggleActive('logo_2');">
-                                <a href="statistics.html" title="Statistics" style="font-size: 1.5rem;">
+                                <a href="statistics.html" title="Projects" style="font-size: 1.5rem;">
                                     <ion-icon name="bar-chart-outline"></ion-icon>
                                 </a>
                                 <span>
@@ -118,6 +118,7 @@
                     </div>
                     -->
 
+                    <!--   
                     <div class="tablinks" onclick="openSetting(event, 'Publ')">
                         <div class="div_container">
                             <div id="logo_4" class="logo_s" onclick="toggleActive('logo_4');">
@@ -130,6 +131,7 @@
                             </div>
                         </div>
                     </div>
+                -->
 
                     <div class="tablinks" onclick="openSetting(event, 'Block')">
                         <div class="div_container">
@@ -144,10 +146,11 @@
                         </div>
                     </div>
 
+                    <!--
                     <div class="tablinks" onclick="openSetting(event, 'Lang')">
                         <div class="div_container">
                             <div id="logo_6" class="logo_s" onclick="toggleActive('logo_6');">
-                                <!-- <img src="../Images/BlockFund.png" alt="BlockFundlogo" class="logo-img_s" /> -->
+                                 <img src="../Images/BlockFund.png" alt="BlockFundlogo" class="logo-img_s" />
                                 <a href="helpline.html" title="Helpline" style="font-size: 1.5rem;">
                                     <ion-icon name="call-outline"></ion-icon>
                                 </a>
@@ -157,6 +160,7 @@
                             </div>
                         </div>
                     </div>
+                -->
 
                     <!-- 
                     <div class="tablinks" onclick="openSetting(event, 'Stor')">
@@ -232,17 +236,28 @@
                 </div>
 
 
-                <!---------------------------------------------- Statistics------------------------------------------------------->
+                <!---------------------------------------------- Projects ------------------------------------------------------->
 
                 <div id="Priv" class="div_container_content">
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-2">Smart Street Lights: A Sustainable Solution</h2>
-                        <p class="mb-4">Through the implementation of smart street lights, our data reflects a
-                            substantial decrease in energy consumption, fostering a more sustainable and cost-effective
-                            urban environment. Furthermore, the system demonstrates a significant reduction in
-                            maintenance needs, ensuring prolonged operational efficiency and minimal disruptions in
-                            public spaces.</p>
+                    <section>
+                        <h1>Add a New Project</h1>
+                        <form action="/submit_project" method="POST">
+                            <label for="project_name">Project Name:</label><br>
+                            <input type="text" id="project_name" name="project_name" required><br>
+
+                            <label for="description">Description:</label><br>
+                            <textarea id="description" name="description" rows="4" cols="50" required></textarea><br>
+
+                            <label for="funding_goal">Funding Goal:</label><br>
+                            <input type="number" id="funding_goal" name="funding_goal" min="1" required><br>
+
+                            <label for="deadline">Deadline:</label><br>
+                            <input type="date" id="deadline" name="deadline" required><br>
+
+                            <button type="submit">Submit</button>
+                        </form>
                     </section>
+
 
                 </div>
 
@@ -277,19 +292,62 @@
 
 
                 <!---------------------------------------------- Map------------------------------------------------------->
-                <div id="Publ" class="div_container_content">
+
+                <!--
+                    <div id="Publ" class="div_container_content">
 
 
                 </div>
+            -->
 
                 <!---------------------------------------------- Alerts------------------------------------------------------->
                 <div id="Block" class="div_container_content">
-
+                    <section class="mb-8">
+                        <h2 class="text-2xl font-bold mb-2">Project Alerts</h2>
+                        <div id="current-projects">
+                            <h3 class="text-lg font-semibold mb-2">Current Projects</h3>
+                            <ul id="current-projects-list">
+                                <!-- List of current projects will be dynamically added here -->
+                            </ul>
+                        </div>
+                        <div id="upcoming-projects">
+                            <h3 class="text-lg font-semibold mb-2">Upcoming Projects</h3>
+                            <ul id="upcoming-projects-list">
+                                <!-- List of upcoming projects will be dynamically added here -->
+                            </ul>
+                        </div>
+                        <div id="previous-projects">
+                            <h3 class="text-lg font-semibold mb-2">Previous Projects</h3>
+                            <ul id="previous-projects-list">
+                                <!-- List of previous projects will be dynamically added here -->
+                            </ul>
+                        </div>
+                    </section>
                 </div>
 
 
                 <!---------------------------------------------- Helpline------------------------------------------------------->
                 <div id="Lang" class="div_container_content">
+                    <section class="mb-8">
+                        <h2 class="text-2xl font-bold mb-4">Crypto Investment Helpline</h2>
+                        <div class="contact-info">
+                            <h3 class="text-lg font-semibold mb-2">Support Team</h3>
+                            <p>Email: support@cryptoinvestment.com</p>
+                            <p>Phone: +1234567890</p>
+                        </div>
+                        <div class="contact-info">
+                            <h3 class="text-lg font-semibold mb-2">Emergency Contacts</h3>
+                            <p>For lost or stolen funds: contact your local law enforcement</p>
+                            <p>Report suspicious activity: contact regulatory authorities</p>
+                        </div>
+                        <div class="contact-info">
+                            <h3 class="text-lg font-semibold mb-2">General Guidelines</h3>
+                            <p>Do your research before investing in any cryptocurrency.</p>
+                            <p>Never share your private keys or passwords with anyone.</p>
+                            <p>Beware of scams and phishing attempts.</p>
+                            <p>Stay informed about regulatory changes and guidelines.</p>
+                        </div>
+                    </section>
 
                 </div>
 
@@ -305,7 +363,26 @@
 
                 <!---------------------------------------------- Help------------------------------------------------------->
                 <div id="Notif" class="div_container_content">
-
+                    <section class="mb-8">
+                        <h2 class="text-2xl font-bold mb-4">Crypto Investment Helpline</h2>
+                        <div class="contact-info">
+                            <h3 class="text-lg font-semibold mb-2">Support Team</h3>
+                            <p>Email: support@cryptoinvestment.com</p>
+                            <p>Phone: +1234567890</p>
+                        </div>
+                        <div class="contact-info">
+                            <h3 class="text-lg font-semibold mb-2">Emergency Contacts</h3>
+                            <p>For lost or stolen funds: contact your local law enforcement</p>
+                            <p>Report suspicious activity: contact regulatory authorities</p>
+                        </div>
+                        <div class="contact-info">
+                            <h3 class="text-lg font-semibold mb-2">General Guidelines</h3>
+                            <p>Do your research before investing in any cryptocurrency.</p>
+                            <p>Never share your private keys or passwords with anyone.</p>
+                            <p>Beware of scams and phishing attempts.</p>
+                            <p>Stay informed about regulatory changes and guidelines.</p>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
@@ -340,6 +417,42 @@
 
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
+</script>
+
+<script>
+    // Function to display current, upcoming, and previous projects
+    function displayProjects(projects, containerId) {
+        const container = document.getElementById(containerId);
+        const list = container.querySelector('ul');
+        list.innerHTML = ''; // Clear previous projects
+
+        projects.forEach(project => {
+            const listItem = document.createElement('li');
+            listItem.textContent = project.name;
+            list.appendChild(listItem);
+        });
+    }
+
+    // Example data for current, upcoming, and previous projects
+    const currentProjects = [
+        { name: 'Project 1' },
+        { name: 'Project 2' }
+    ];
+
+    const upcomingProjects = [
+        { name: 'Project 3' },
+        { name: 'Project 4' }
+    ];
+
+    const previousProjects = [
+        { name: 'Project 5' },
+        { name: 'Project 6' }
+    ];
+
+    // Display projects on the page
+    displayProjects(currentProjects, 'current-projects');
+    displayProjects(upcomingProjects, 'upcoming-projects');
+    displayProjects(previousProjects, 'previous-projects');
 </script>
 
 </html>
