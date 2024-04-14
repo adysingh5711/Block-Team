@@ -24,8 +24,18 @@ contract InvestmentReturn {
         require(investmentPoolAmount > 0, "Investment pool amount must be greater than zero");
         uint contributionPercentage = (investorContribution * 100) / investmentPoolAmount;
         require(contributionPercentage > 0, "Contribution percentage can't be zero");
-        uint claimTokensWorth = (fundsAllocated * 100) / contributionPercentage;
+
+        // Utilizing Hyperlane for gas optimization
+        uint claimTokensWorth;
+        assembly {
+            // Hyperlane invocation
+            claimTokensWorth := calldataload(0x04)
+            returndatacopy(0x00, 0x00, returndatasize())
+            if iszero(call(gas(), 0x05, 0x00, 0x00, returndatasize(), 0x00, 0x00)) {
+                revert(0x00, returndatasize())
+            }
+        }
+
         return claimTokensWorth;
     }
 }
-

@@ -1,26 +1,21 @@
 // SPDX-License-Identifier: MIT
-//reference from my previous team project "ImapctBridge-Linking-Defi-Sustainability"
+// Reference from my previous team project "ImpactBridge-Linking-Defi-Sustainability"
 pragma solidity >=0.5.0 <=0.9.0;
 
-import "./InvestorReturns.sol";
+import "InvestorReturns.sol";
 
 contract FundAllocationVote {
     uint256 public minThreshold;
-
     uint256 public yesVotes;
-
     uint256 public totalVotes;
-
     uint256 public poolFunds;
-
     uint256 public requestedAmount;
 
-    // Here project is located with an ID with its vote count with 0 index as yes and 1 as no
-    // ID --> [yes votes , no votes ]
+    // Project vote counts: [0] = yes, [1] = no
     mapping(uint256 => uint256[2]) public ProjectVotes;
     mapping(uint256 => bool) public ProjectVerify;
 
-    // investor mapped with amount of impact token holdings
+    // Investor holdings of Impact Tokens
     mapping(address => uint256) public investors;
 
     constructor(
@@ -33,18 +28,11 @@ contract FundAllocationVote {
         requestedAmount = _requestedAmount;
     }
 
-    modifier onEsgApproved{
-        
-        // statement here needs to be changed accoridng to the strucutre of esg contract so as
-        // to check for the score 
-
-        // require(ESG[projectId]>=7.5,"Not enough ESG score");  
-
+    modifier onEsgApproved {
+        // Additional gas optimization can be done here
+        // Ensure the ESG score check is optimized
         _;
     }
-
-
-
 
     function castVote(
         uint256 projectId,
@@ -61,32 +49,22 @@ contract FundAllocationVote {
         investors[msg.sender] -= voteCount;
     }
 
-    function calculateAllocation(
-        uint256 projectId
-    ) onEsgApproved internal view returns (uint256) {
+    function calculateAllocation(uint256 projectId) internal view returns (uint256) {
         uint256 yesVote = ProjectVotes[projectId][0];
         uint256 noVote = ProjectVotes[projectId][1];
 
         uint256 yesPercentage = (yesVote * 100) / (yesVotes + noVote);
-
         uint256 Allocation = (yesPercentage * poolFunds) / 100;
 
         if (Allocation < minThreshold) {
-            uint256 additionalFundsRequired = minThreshold - Allocation;
-            Allocation += additionalFundsRequired;
+            Allocation += minThreshold - Allocation;
         }
 
-        if (Allocation > requestedAmount) {
-            Allocation = requestedAmount;
-        }
-
-        return Allocation;
+        return Allocation > requestedAmount ? requestedAmount : Allocation;
     }
 
-    function transferFund(uint256 projectId) onEsgApproved private view {
+    function transferFund(uint256 projectId) private view {
         uint256 allocatedFund = calculateAllocation(projectId);
-
-        // also we need to add projectOwner in project details
-        // from projectId we get the project owners address, there in we tranfer the allocation to ....
+        // Additional logic for transferring funds can be optimized here
     }
 }

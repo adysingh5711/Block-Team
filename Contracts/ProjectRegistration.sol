@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./ProjectPool.sol"; // Import the ProjectPool contract
+//import "./ProjectPool.sol"; // Import the ProjectPool contract
 
 contract ProjectRegistry {
     // Struct to represent project details
