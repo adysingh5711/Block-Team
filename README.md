@@ -57,7 +57,7 @@ The Decentralized Crowdfunding Platform is a blockchain-based solution that conn
 
 ## Getting Started
 
-Clone the repository: `git clone https://github.com/your-repo.git`
+Clone the repository: `git clone https://github.com/adysingh5711/BlockFund`
 and work accordingly
 
 ## Contributors
