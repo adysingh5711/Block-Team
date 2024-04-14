@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlockFund Smart Lighting Dashboard</title>
+    <link rel="stylesheet" href="../CSS/index_s.css" />
+    <link rel="stylesheet" href="../CSS/dashboard.css" />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+</head>
+
+<body>
+
+    <!---------------------------------------------------------- Navigation Bar -------------------------------------------------------->
+    <header>
+        <a href="../../index.html" class="logo"><img src="../Images/BlockFund.png" alt="BlockFundlogo"
+                class="logo-img"></a>
+
+        <nav class="nav">
+            <div class="nav-icon">
+                <!--
+                <div class="notification">
+                    <a href="#">
+                        <ion-icon name="notifications-outline"></ion-icon>
+                    </a>
+                </div> 
+            -->
+                <a href="../../index.html" title="Home">
+                    <ion-icon name="home-outline"></ion-icon>
+                </a>
+
+                <a href="../HTML/dashboard.html" title="Dashboard">
+                    <ion-icon name="apps-outline"></ion-icon>
+                </a>
+
+                <a href="#" title="Our Services">
+                    <ion-icon name="construct-outline"></ion-icon>
+                </a>
+
+                <!--
+                <a href="#" title="Resources">
+                    <ion-icon name="document-outline"></ion-icon>
+                </a>
+                -->
+
+                <a href="../HTML/AboutUS.html" title="About Us">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                </a>
+
+                <!--
+                <a href="#" title="Login">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                </a>
+                -->
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container_S" style="display: flex;">
+        <!------------------------------------------------------ Left Side Bar --------------------------------------------------------->
+        <div class="left-sidebar_s">
+            <div class="Dashboard">
+                <h1 class="Dashboard" id="Dashboard_title" style="font-size: 2.5vw">
+                    Dashboard
+                </h1>
+            </div>
+
+            <hr class="your_hr" style="margin-top: 0.5vw;">
+
+            <div class="tab">
+                <div class="tablinks" onclick="openSetting(event, 'yr_info')" id="defaultOpen">
+                    <div class="div_container">
+                        <div id="logo_1" class="logo_s" onclick="toggleActive('logo_1');">
+                            <!-- <img src="../Images/BlockFund.png" alt="BlockFundlogo" class="logo-img_s" /> -->
+                            <span>
+                                <h3 class="your_info" style="display: inline">Our Information</h3>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="your_hr" />
+                <!------------------------------------------------------ Actual -------------------------------------------------->
+                <div class="main_Dashboard">
+                    <div class="tablinks" onclick="openSetting(event, 'Priv')">
+                        <div class="div_container">
+                            <div id="logo_2" class="logo_s" onclick="toggleActive('logo_2');">
+                                <a href="statistics.html" title="Statistics" style="font-size: 1.5rem;">
+                                    <ion-icon name="bar-chart-outline"></ion-icon>
+                                </a>
+                                <span>
+                                    <h3 class="your_info" style="display: inline">Statistics</h3>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="tablinks" onclick="openSetting(event, 'Prof_Tag')">
+                        <div class="div_container">
+                            <div id="logo_3" class="logo_s" onclick="toggleActive('logo_3');">
+                                <a href="voice-analysis.html" title="Voice Analysis" style="font-size: 1.5rem;">
+                                    <ion-icon name="mic-outline"></ion-icon>
+                                </a>
+                                <span>
+                                    <h3 class="your_info" style="display: inline"> Voice Analysis</h3>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+                    <div class="tablinks" onclick="openSetting(event, 'Publ')">
+                        <div class="div_container">
+                            <div id="logo_4" class="logo_s" onclick="toggleActive('logo_4');">
+                                <a href="maps.html" title="Maps" style="font-size: 1.5rem;">
+                                    <ion-icon name="map-outline"></ion-icon>
+                                </a>
+                                <span>
+                                    <h3 class="your_info" style="display: inline">Map</h3>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tablinks" onclick="openSetting(event, 'Block')">
+                        <div class="div_container">
+                            <div id="logo_5" class="logo_s" onclick="toggleActive('logo_5');">
+                                <a href="alerts.html" title="Alerts" style="font-size: 1.5rem;">
+                                    <ion-icon name="alert-circle-outline"></ion-icon>
+                                </a>
+                                <span>
+                                    <h3 class="your_info" style="display: inline">Alerts</h3>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tablinks" onclick="openSetting(event, 'Lang')">
+                        <div class="div_container">
+                            <div id="logo_6" class="logo_s" onclick="toggleActive('logo_6');">
+                                <!-- <img src="../Images/BlockFund.png" alt="BlockFundlogo" class="logo-img_s" /> -->
+                                <a href="helpline.html" title="Helpline" style="font-size: 1.5rem;">
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </a>
+                                <span>
+                                    <h3 class="your_info" style="display: inline">Helpline</h3>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 
+                    <div class="tablinks" onclick="openSetting(event, 'Stor')">
+                        <div class="div_container">
+                            <div id="logo_7" class="logo_s" onclick="toggleActive('logo_7');">
+                                <img src="../Images/BlockFund.png" alt="BlockFundlogo" class="logo-img_s" />
+                                <span>
+                                    <h3 class="your_info" style="display: inline">Stories</h3>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+                    <hr class="your_hr" style="margin-top: 0.5vw;">
+
+                    <div class="tablinks" onclick="openSetting(event, 'Notif')">
+                        <div class="div_container">
+                            <div id="logo_8" class="logo_s" onclick="toggleActive('logo_8');">
+                                <a href="help.html" title="Help" style="font-size: 1.5rem;">
+                                    <ion-icon name="help-outline"></ion-icon>
+                                </a>
+                                <span>
+                                    <h3 class="your_info" style="display: inline">Help</h3>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="your_hr" style="margin-top: 0.5vw;">
+
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                </div>
+            </div>
+        </div>
+
+        <!------------------------------------------------------ Middle or Right Bar -------------------------------------------------->
+        <div class="mid_bar">
+            <div class="mid_bar_content">
+                <!---------------------------------------------- Our Information------------------------------------------------------->
+                <div id="yr_info" class="div_container_content">
+                    <section class="mb-8">
+                        <h2 class="text-2xl font-bold mb-2">Decentralized Crowdfunding Platform</h2>
+                        <p class="mb-4">
+                            The goal is to construct a decentralized crowdfunding platform facilitating project creators
+                            in acquiring
+                            funds from a global pool of investors, bypassing traditional intermediaries. Key features to
+                            be incorporated
+                            include smart contract-based escrow services, voting mechanisms for project selection, and
+                            reputation
+                            systems aimed at instilling trust.
+                        </p>
+                        <p class="mb-4">
+                            <b>Clarification:</b> In traditional crowdfunding platforms, intermediaries often introduce
+                            opacity and insecurity.
+                            The challenge presented is to devise a decentralized crowdfunding platform utilizing
+                            blockchain technology. This platform
+                            must ensure transparent fundraising, secure transactions, and equitable distribution of
+                            funds. Utilizing
+                            smart contracts, participants can introduce functionalities like escrow services, voting
+                            mechanisms for
+                            project selection, and reputation systems to cultivate trust among stakeholders. Moreover,
+                            the solution
+                            should adhere to regulatory standards and address issues such as fraud prevention, investor
+                            safeguarding,
+                            and conflict resolution. Following development, the solution should be deployed on a testnet
+                            chain, and
+                            both the contract address and code should be publicly accessible on GitHub for transparency
+                            and scrutiny,
+                            including the frontend component.
+                        </p>
+                    </section>
+                </div>
+
+
+                <!---------------------------------------------- Statistics------------------------------------------------------->
+
+                <div id="Priv" class="div_container_content">
+                    <section class="mb-8">
+                        <h2 class="text-2xl font-bold mb-2">Smart Street Lights: A Sustainable Solution</h2>
+                        <p class="mb-4">Through the implementation of smart street lights, our data reflects a
+                            substantial decrease in energy consumption, fostering a more sustainable and cost-effective
+                            urban environment. Furthermore, the system demonstrates a significant reduction in
+                            maintenance needs, ensuring prolonged operational efficiency and minimal disruptions in
+                            public spaces.</p>
+                    </section>
+
+                </div>
+
+
+                <!---------------------------------------------- Voice------------------------------------------------------->
+                <!--
+                <div>
+                    <div id="Prof_Tag" class="div_container_content">
+                        <section class="mb-8">
+                            <h2 class="text-2xl font-bold mb-2">Empowering Urban Safety</h2>
+                            <p class="mb-4">Our system accepts voice input, swiftly analyzing it for signs of distress or emergencies. If the need for assistance is detected, an automated alert is triggered, ensuring rapid response from law enforcement authorities. This seamless integration of voice processing adds an extra layer of security to our innovative solution, prioritizing the well-being of communities.</p>
+                        </section>
+
+                        <br>
+
+                        <section id="Voice">
+                            <form id="voiceForm">
+                                <label for="voiceInput">Voice Input:</label>
+                                <input type="text" id="voiceInput" name="voiceInput" readonly>
+                        
+                                <button type="button" onclick="startSpeechRecognition()">Start Voice Input</button>
+                        <br>
+                                <label for="textOutput">Text Output:</label>
+                                <textarea id="textOutput" name="textOutput" rows="4" cols="50" readonly></textarea>
+                            </form>
+    
+                        </section>
+                    </div>
+
+                </div>
+                -->
+
+
+                <!---------------------------------------------- Map------------------------------------------------------->
+                <div id="Publ" class="div_container_content">
+
+
+                </div>
+
+                <!---------------------------------------------- Alerts------------------------------------------------------->
+                <div id="Block" class="div_container_content">
+
+                </div>
+
+
+                <!---------------------------------------------- Helpline------------------------------------------------------->
+                <div id="Lang" class="div_container_content">
+
+                </div>
+
+
+                <!---------------------------------------------- Your Information------------------------------------------------------->
+                <!-- 
+                <div id="Stor" class="div_container_content">
+                    <h3>Stories</h3>
+                    <p>London is the capital city of England.</p>
+                </div> 
+            -->
+
+
+                <!---------------------------------------------- Help------------------------------------------------------->
+                <div id="Notif" class="div_container_content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function toggleActive(id) {
+        var elements = document.querySelectorAll(".logo_s");
+        elements.forEach(function (element) {
+            if (element.id === id) {
+                element.classList.add("active");
+            } else {
+                element.classList.remove("active");
+            }
+        });
+    }
+
+    function openSetting(evt, SettingName) {
+        var i, div_container_content, tablinks;
+        div_container_content = document.getElementsByClassName("div_container_content");
+        for (i = 0; i < div_container_content.length; i++) {
+            div_container_content[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(SettingName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+
+</html>
